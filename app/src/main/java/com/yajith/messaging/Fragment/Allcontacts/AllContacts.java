@@ -38,7 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.yajith.messaging.Database.DatabaseHelper;
 import com.yajith.messaging.FirstTime.LoadContact;
 import com.yajith.messaging.FirstTime.Name;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;

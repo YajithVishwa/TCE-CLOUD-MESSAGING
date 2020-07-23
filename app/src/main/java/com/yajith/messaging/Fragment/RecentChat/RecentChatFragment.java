@@ -1,7 +1,11 @@
 package com.yajith.messaging.Fragment.RecentChat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.yajith.messaging.Database.DatabaseHelper;
 import com.yajith.messaging.FirstTime.FirstActivity;
 import com.yajith.messaging.Fragment.Allcontacts.AllContacts;
 import com.yajith.messaging.Fragment.Chat.Chat;
@@ -43,7 +46,6 @@ public class RecentChatFragment extends Fragment {
     ArrayList<String> name=new ArrayList<>();
     String myphone;
     String uid;
-    DatabaseHelper databaseHelper;
     SharedPref sharedPref;
     ArrayList<User> name1;
     @Nullable
@@ -51,7 +53,6 @@ public class RecentChatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.recent_chat_fragment,container,false);
         listView=root.findViewById(R.id.recent);
-        databaseHelper=new DatabaseHelper(getContext());
         sharedPref=new SharedPref();
         sharedPref.first(getActivity().getApplicationContext());
         myphone=sharedPref.retrive();
@@ -119,7 +120,7 @@ public class RecentChatFragment extends Fragment {
                         String user = String.valueOf(dataSnapshot.child("phone").getValue());
                         boolean isOnline = dataSnapshot.child("isOnline").getValue(boolean.class);
                         if (name.contains(user)) {
-                            String n = databaseHelper.getContactName(user, ContextClass.context);
+                            String n = getContactName(user,ContextClass.context);
                             name1.add(new User(user, n, isOnline));
                         }
                     }
@@ -136,5 +137,24 @@ public class RecentChatFragment extends Fragment {
 
 
         }
+    }
+
+    public String getContactName(final String phoneNumber, Context context)
+    {
+        Uri uri=Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,Uri.encode(phoneNumber));
+
+        String[] projection = new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME};
+
+        String contactName="";
+        Cursor cursor=context.getContentResolver().query(uri,projection,null,null,null);
+
+        if (cursor != null) {
+            if(cursor.moveToFirst()) {
+                contactName=cursor.getString(0);
+            }
+            cursor.close();
+        }
+
+        return contactName;
     }
 }

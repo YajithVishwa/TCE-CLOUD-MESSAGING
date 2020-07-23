@@ -9,7 +9,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +26,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.yajith.messaging.Database.DatabaseHelper;
 import com.yajith.messaging.Fragment.Allcontacts.AllContacts;
 import com.yajith.messaging.Fragment.ContextClass;
 import com.yajith.messaging.Fragment.RecentChat.RecentChatFragment;
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPref sharedPref;
     String uid,myphone;
     Context context;
-    DatabaseHelper databaseHelper;
     String name;
     Activity activity;
     ProgressDialog progressDialog;
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.navigation);
         navigationView.setSelectedItemId(R.id.chat);
         activity=this;
-        databaseHelper=new DatabaseHelper(this);
         ContextClass.context=getApplicationContext();
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Refreshing Contacts");
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                                         String callingph = snapshot.child("phone").getValue(String.class);
                                         Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
                                         intent.putExtra("receiveruid", callinguid);
-                                        intent.putExtra("name", databaseHelper.getContactName(callingph, getApplicationContext()));
+                                        intent.putExtra("name", getContactName(callingph, getApplicationContext()));
                                         startActivity(intent);
                                     }
                                 }
@@ -137,6 +137,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public String getContactName(final String phoneNumber, Context context)
+    {
+        Uri uri=Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,Uri.encode(phoneNumber));
+
+        String[] projection = new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME};
+
+        String contactName="";
+        Cursor cursor=context.getContentResolver().query(uri,projection,null,null,null);
+
+        if (cursor != null) {
+            if(cursor.moveToFirst()) {
+                contactName=cursor.getString(0);
+            }
+            cursor.close();
+        }
+
+        return contactName;
+    }
+
     private void isOnline(boolean isOnline)
     {
         Map<String,Object> map=new HashMap<>();

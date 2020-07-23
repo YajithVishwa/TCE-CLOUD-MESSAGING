@@ -14,14 +14,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.yajith.messaging.Database.DatabaseHelper;
+
 import com.yajith.messaging.MainActivity;
 import com.yajith.messaging.R;
 import com.yajith.messaging.SharedPref.SharedPref;
 
 public class LoadContact extends AppCompatActivity {
     ProgressDialog progressDialog;
-    DatabaseHelper databaseHelper;
     SharedPref sharedPref;
     String ph,uid;
     @Override
@@ -38,7 +37,7 @@ public class LoadContact extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Getting Contacts");
         progressDialog.show();
-        databaseHelper=new DatabaseHelper(this);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
