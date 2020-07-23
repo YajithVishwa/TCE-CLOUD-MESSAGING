@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="30dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/relative"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageprofile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/user" />
+            <ImageView
+                android:layout_width="15dp"
+                android:id="@+id/online"
+                android:layout_toEndOf="@+id/imageprofile"
+                android:layout_marginLeft="-25dp"
+                android:layout_below="@+id/imageprofile"
+                android:background="@drawable/online"
+                android:layout_height="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:id="@+id/nameid"
+                android:layout_toEndOf="@id/imageprofile"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TCE"
+                android:textColor="#303335"
+                android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageprofile"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/nameid"
+                android:fontFamily="@font/open_sans_bold"
+                android:id="@+id/last_msg"
+                android:textColor="@color/sub_head"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

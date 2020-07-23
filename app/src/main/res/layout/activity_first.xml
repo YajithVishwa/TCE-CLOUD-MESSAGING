@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:backgroundTint="@color/background"
+    tools:context=".FirstTime.FirstActivity"
+    android:weightSum="1.0">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:layout_weight="0.3">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_extrabold"
+            android:text="TCE CLOUD"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:textColor="@color/app_name"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cloud Messaging and Video Calling App"
+            android:fontFamily="@font/open_sans"
+            android:textAlignment="center"
+            android:textColor="@color/sub_head"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        tools:ignore="UselessParent"
+        android:layout_weight="0.7">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Create your account"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="20dp"
+            android:textColor="#6699FF"
+            android:textSize="25sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                app:boxStrokeColor="@color/app_name"
+                android:enabled="true"
+                app:helperTextEnabled="true"
+                app:helperText="Enter your 10 digit mobile number"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                app:startIconDrawable="@drawable/ic_stay_primary_portrait_black_24dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/phone"
+                    android:inputType="phone"
+                    android:layout_height="wrap_content"
+                    android:textColor="#303335"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="23dp"
+                android:layout_toEndOf="@id/textinputlayout"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/button"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Get OTP"
+                android:textColor="#5390F7" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout1"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="OTP Number"
+                app:boxStrokeColor="@color/app_name"
+                android:enabled="true"
+                app:helperTextEnabled="true"
+                app:helperText="OTP has been sent to your mobile"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                app:startIconDrawable="@drawable/ic_vpn_key_black_24dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/OTP"
+                    android:inputType="phone"
+                    android:layout_height="wrap_content"
+                    android:textColor="#303335"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginStart="23dp"
+                android:layout_toEndOf="@id/textinputlayout1"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/button"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Resend"
+                android:textColor="#5390F7" />
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Next"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:textColor="#5390F7" />
+
+    </LinearLayout>
+</LinearLayout>

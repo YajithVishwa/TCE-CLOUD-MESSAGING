@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_gravity="right"
+    android:background="#F4F4F5"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="25sp"
+        android:layout_alignParentEnd="true"
+        android:text="hi"
+        android:textColor="#303335"
+        android:fontFamily="@font/open_sans"
+        android:id="@+id/text"
+        android:layout_marginRight="15dp"
+        android:padding="5dp"
+        android:layout_height="wrap_content"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/text"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="10sp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/text"
+        android:padding="5dp"
+        android:layout_gravity="start"
+        android:textColor="#9A333738"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/date"
+        android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/seen"
+            android:textSize="10sp"
+            android:textColor="#9A333738"
+            android:fontFamily="@font/open_sans"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="end"
+            android:padding="5dp"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+</RelativeLayout>
