@@ -27,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},1000);
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS,Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS},1000);
 
     }
 
@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
         switch (requestCode)
         {
             case 1000:
-                if(grantResults.length>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED)
+                if(grantResults.length>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED)
                 {
                     if(sharedPref.retrive()!=null) {
                         new Handler().postDelayed(new Runnable() {

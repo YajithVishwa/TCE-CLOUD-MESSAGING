@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Telephony;
+import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +44,7 @@ public class FirstActivity extends AppCompatActivity {
     Button button,otp,resend;
     Context context;
     SharedPref sharedPref;
+    BroadcastReceiver broadcastReceiver=null;
     String cridentials,ph;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     @Override
@@ -147,6 +152,7 @@ public class FirstActivity extends AppCompatActivity {
                 button.setEnabled(false);
                 editText.setEnabled(false);
                 Toast.makeText(context, "Otp Sent", Toast.LENGTH_SHORT).show();
+                broad();
             }
 
             @Override
@@ -196,5 +202,36 @@ public class FirstActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void broad()
+    {
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
+        broadcastReceiver=new BroadcastReceiver()
+        {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                SmsMessage[] smsMessages= Telephony.Sms.Intents.getMessagesFromIntent(intent);
+                for(SmsMessage message:smsMessages)
+                {
+                    String body=message.getMessageBody();
+                    Log.i("msg",body);
+                    String[] splits=body.split(" ");
+                    if(splits[splits.length-1].equals("code."));
+                    {
+                        editText1.setText(splits[0]);
+                    }
+                }
+            }
+        };
+        registerReceiver(broadcastReceiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(broadcastReceiver!=null) {
+            unregisterReceiver(broadcastReceiver);
+        }
     }
 }
