@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.yajith.messaging.R;
@@ -39,6 +40,12 @@ public class CopyDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.custom_dialog,container,false);
+        if(savedInstanceState!=null) {
+            text = savedInstanceState.getString("text");
+            date=savedInstanceState.getString("date");
+            seen=savedInstanceState.getBoolean("seen");
+            type=savedInstanceState.getInt("type");
+        }
         TextView textView=root.findViewById(R.id.textcopy);
         Button button=root.findViewById(R.id.copy);
         Button info=root.findViewById(R.id.info);
@@ -63,4 +70,14 @@ public class CopyDialog extends BottomSheetDialogFragment {
         });
         return root;
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("text",text);
+        outState.putString("date",date);
+        outState.putBoolean("seen",seen);
+        outState.putInt("type",type);
+    }
+
 }

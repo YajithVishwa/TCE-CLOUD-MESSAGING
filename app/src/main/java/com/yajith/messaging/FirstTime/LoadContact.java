@@ -26,6 +26,7 @@ public class LoadContact extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_load_contact);
         progressDialog=new ProgressDialog(this);
         sharedPref=new SharedPref();
@@ -57,6 +58,7 @@ public class LoadContact extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         progressDialog.dismiss();
     }
 }

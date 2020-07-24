@@ -35,6 +35,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -85,6 +86,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_chat);
         sharedPref=new SharedPref();
         name=getIntent().getExtras().getString("name");
@@ -420,6 +422,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         isOnline(false);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         databaseReference.removeEventListener(valueEventListener);
     }
 

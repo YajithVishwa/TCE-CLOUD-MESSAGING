@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,13 +29,20 @@ public class GetDetails extends AppCompatActivity {
     String name,age,email,ph,uid,aadhar;
     Button button;
     Context context;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_get_details);
         ph=getIntent().getExtras().getString("phone");
         uid=getIntent().getExtras().getString("uid");
         editText=findViewById(R.id.name);
+        dialog = new Dialog(GetDetails.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_progress_bar);
+
         editText1=findViewById(R.id.age);
         editText2=findViewById(R.id.email);
         editText3=findViewById(R.id.aadhar);
@@ -76,6 +85,10 @@ public class GetDetails extends AppCompatActivity {
                 }
                 else {
                     button.setEnabled(false);
+                    if(!dialog.isShowing())
+                    {
+                        dialog.show();
+                    }
                     Map<String,Object> map=new HashMap<>();
                     map.put("name",name);
                     map.put("age",age);
@@ -85,6 +98,10 @@ public class GetDetails extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()) {
+                                if(dialog.isShowing())
+                                {
+                                    dialog.dismiss();
+                                }
                                 Intent intent = new Intent(GetDetails.this, LoadContact.class);
                                 intent.putExtra("ph", ph);
                                 intent.putExtra("uid",uid);
@@ -92,6 +109,10 @@ public class GetDetails extends AppCompatActivity {
                             }
                             else
                             {
+                                if(dialog.isShowing())
+                                {
+                                    dialog.dismiss();
+                                }
                                 button.setEnabled(true);
                                 Toast.makeText(GetDetails.this, "Error Contact Admin", Toast.LENGTH_SHORT).show();
                             }
@@ -103,5 +124,11 @@ public class GetDetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

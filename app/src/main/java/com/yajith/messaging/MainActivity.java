@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_main);
         navigationView=findViewById(R.id.navigation);
         navigationView.setSelectedItemId(R.id.chat);
@@ -185,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         isOnline(false);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         progressDialog.dismiss();
     }
 

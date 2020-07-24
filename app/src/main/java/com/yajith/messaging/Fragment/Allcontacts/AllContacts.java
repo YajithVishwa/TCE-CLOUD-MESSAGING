@@ -59,6 +59,7 @@ public class AllContacts extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.all_contacts_fragment);
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
@@ -195,6 +196,9 @@ public class AllContacts extends AppCompatActivity {
         }
     }
 
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
 }

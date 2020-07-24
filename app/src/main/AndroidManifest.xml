@@ -10,22 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Fragment.VideoCall.AnswerActivity"></activity>
+        <activity android:name=".FirstTime.Swipe.SwipeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/swipe"></activity>
+        <activity android:name=".Fragment.VideoCall.AnswerActivity" />
         <activity
             android:name=".Fragment.Chat.ChatActivity"
-            android:parentActivityName=".MainActivity" >
-
-        </activity>
-        <activity android:name=".FirstTime.GetDetails" />
-        <activity android:name=".FirstTime.LoadContact" />
-        <activity android:name=".FirstTime.FirstActivity" />
-        <activity android:name=".Fragment.VideoCall.CallingActivity" />
-        <activity android:name=".Fragment.VideoCall.VideoChatActivity" />
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".FirstTime.GetDetails"
+            android:theme="@style/swipe"/>
+        <activity android:name=".FirstTime.LoadContact"
+            android:theme="@style/swipe"/>
+        <activity android:name=".FirstTime.FirstActivity"
+            android:theme="@style/swipe"/>
+        <activity android:name=".Fragment.VideoCall.CallingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Fragment.VideoCall.VideoChatActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Fragment.Allcontacts.AllContacts"
             android:launchMode="singleTask"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen"
+            android:theme="@style/swipe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,13 +40,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <receiver android:name=".Receivers.LowBattery"
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <receiver
+            android:name=".Receivers.LowBattery"
             android:enabled="true">
             <intent-filter>
-                <action android:name="android.intent.action.BATTERY_LOW"/>
+                <action android:name="android.intent.action.BATTERY_LOW" />
             </intent-filter>
         </receiver>
-
         <service
             android:name=".Notification.MyFirebaseIdService"
             android:enabled="true"
@@ -48,28 +60,25 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <service
             android:name=".Notification.MyFirebaseMessaging"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
             </intent-filter>
         </service>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

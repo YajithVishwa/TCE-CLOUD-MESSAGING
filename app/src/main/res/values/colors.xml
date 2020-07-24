@@ -8,4 +8,5 @@
     <color name="app_name">#3F6BF3</color>
     <color name="sub_head">#303335</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorTransparent">#43000000</color>
 </resources>

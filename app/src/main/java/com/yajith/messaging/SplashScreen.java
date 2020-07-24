@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.database.FirebaseDatabase;
 import com.yajith.messaging.FirstTime.FirstActivity;
 import com.yajith.messaging.FirstTime.LoadContact;
+import com.yajith.messaging.FirstTime.Swipe.SwipeActivity;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;
 import com.yajith.messaging.SharedPref.SharedPref;
 
@@ -24,6 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_splash_screen);
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
@@ -54,6 +56,7 @@ public class SplashScreen extends AppCompatActivity {
                             public void run() {
                                 finish();
                                 startActivity(new Intent(SplashScreen.this, FirstActivity.class));
+
                             }
                         }, 3000);
                     }
@@ -64,5 +67,11 @@ public class SplashScreen extends AppCompatActivity {
                     finish();
                 }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

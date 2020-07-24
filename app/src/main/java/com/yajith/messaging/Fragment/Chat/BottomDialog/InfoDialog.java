@@ -31,6 +31,12 @@ public class InfoDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.custom_info_dialog,container,false);
+        if(savedInstanceState!=null) {
+            text = savedInstanceState.getString("text");
+            date=savedInstanceState.getString("date");
+            seen=savedInstanceState.getBoolean("seen");
+            type=savedInstanceState.getInt("type");
+        }
         TextView textView=root.findViewById(R.id.copytext);
         TextView textView1=root.findViewById(R.id.date);
         TextView textView2=root.findViewById(R.id.seen);
@@ -55,5 +61,13 @@ public class InfoDialog extends BottomSheetDialogFragment {
         }
 
         return root;
+    }
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("text",text);
+        outState.putString("date",date);
+        outState.putBoolean("seen",seen);
+        outState.putInt("type",type);
     }
 }

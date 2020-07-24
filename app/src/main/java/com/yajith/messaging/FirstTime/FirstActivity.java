@@ -4,17 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,13 +47,23 @@ public class FirstActivity extends AppCompatActivity {
     Button button,otp,resend;
     Context context;
     SharedPref sharedPref;
+    Dialog dialog;
     BroadcastReceiver broadcastReceiver=null;
-    String cridentials,ph;
+    String cridentials,ph,otps=null;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_first);
+        dialog = new Dialog(FirstActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_progress_bar);
+        if(savedInstanceState!=null)
+        {
+            ph=savedInstanceState.getString("phone");
+        }
         editText=findViewById(R.id.phone);
         context=this;
         sharedPref=new SharedPref();
@@ -99,7 +112,7 @@ public class FirstActivity extends AppCompatActivity {
         otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String otps=editText1.getText().toString();
+                otps=editText1.getText().toString();
                 if(otps.equals(""))
                 {
                     AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -115,6 +128,7 @@ public class FirstActivity extends AppCompatActivity {
                 else
                 {
                     otp.setEnabled(false);
+                    dialog.show();
                     PhoneAuthCredential phoneAuthCredential=PhoneAuthProvider.getCredential(cridentials,otps);
                     signInWithPhoneAuthCredential(phoneAuthCredential);
                 }
@@ -142,6 +156,10 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
                 otp.setEnabled(true);
+                if(dialog.isShowing())
+                {
+                    dialog.dismiss();
+                }
                 Toast.makeText(context, "Error Occurred Contact Admin", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
@@ -152,6 +170,7 @@ public class FirstActivity extends AppCompatActivity {
                 button.setEnabled(false);
                 editText.setEnabled(false);
                 Toast.makeText(context, "Otp Sent", Toast.LENGTH_SHORT).show();
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 broad();
             }
 
@@ -183,6 +202,10 @@ public class FirstActivity extends AppCompatActivity {
                             FirebaseDatabase.getInstance().getReference().child("User").child(uid).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+                                    if(dialog.isShowing())
+                                    {
+                                        dialog.dismiss();
+                                    }
                                     Intent i=new Intent(FirstActivity.this,GetDetails.class);
                                     i.putExtra("phone",ph);
                                     i.putExtra("uid",uid);
@@ -191,6 +214,10 @@ public class FirstActivity extends AppCompatActivity {
                             });
                         } else {
                             otp.setEnabled(true);
+                            if(dialog.isShowing())
+                            {
+                                dialog.dismiss();
+                            }
                             Toast.makeText(FirstActivity.this, "Sign Up Failed", Toast.LENGTH_SHORT).show();
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(FirstActivity.this, "InValid OTP", Toast.LENGTH_SHORT).show();
@@ -232,5 +259,18 @@ public class FirstActivity extends AppCompatActivity {
         if(broadcastReceiver!=null) {
             unregisterReceiver(broadcastReceiver);
         }
+        if(dialog.isShowing())
+        {
+            dialog.dismiss();
+        }
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("phone",ph);
+        outState.putString("otp",otps);
+
     }
 }
