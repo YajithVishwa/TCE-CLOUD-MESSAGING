@@ -21,7 +21,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +45,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.FirstTime.Users;
 import com.yajith.messaging.Fragment.APIService;
+import com.yajith.messaging.Fragment.Chat.BottomDialog.CopyDialog;
 import com.yajith.messaging.Fragment.VideoCall.CallingActivity;
 import com.yajith.messaging.Notification.Client;
 import com.yajith.messaging.Notification.MyResponse;
@@ -76,6 +80,7 @@ public class ChatActivity extends AppCompatActivity {
     ArrayList<DataAdap> adaps;
     APIService apiService;
     ImageView imageView;
+    Vibrator v;
     boolean notific=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,7 @@ public class ChatActivity extends AppCompatActivity {
         sharedPref=new SharedPref();
         name=getIntent().getExtras().getString("name");
         receiverphone=getIntent().getExtras().getString("ph");
+        v=(Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         if(receiverphone.startsWith("+91 "))
         {
             receiverphone=receiverphone.substring(4,receiverphone.length());
@@ -339,10 +345,17 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String copy=adaps.get(i).text;
-                ClipboardManager clipboardManager=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData=ClipData.newPlainText("text",copy);
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(activity, "Copied : "+copy, Toast.LENGTH_SHORT).show();
+                String date=adaps.get(i).date;
+                boolean seen=adaps.get(i).seen;
+                int type=adaps.get(i).type;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    v.vibrate(500);
+                }
+                CopyDialog copyDialog=new CopyDialog(copy,date,seen,type);
+                copyDialog.show(getSupportFragmentManager(),"Copy");
+
                 return true;
             }
         });

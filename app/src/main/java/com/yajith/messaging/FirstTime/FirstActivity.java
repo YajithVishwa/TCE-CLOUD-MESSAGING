@@ -215,7 +215,6 @@ public class FirstActivity extends AppCompatActivity {
                 for(SmsMessage message:smsMessages)
                 {
                     String body=message.getMessageBody();
-                    Log.i("msg",body);
                     String[] splits=body.split(" ");
                     if(splits[splits.length-1].equals("code."));
                     {
