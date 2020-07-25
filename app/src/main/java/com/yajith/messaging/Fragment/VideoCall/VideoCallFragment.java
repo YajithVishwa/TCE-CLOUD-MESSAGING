@@ -56,7 +56,7 @@ public class VideoCallFragment extends Fragment {
         pref=new SharedPref();
         mainContext=getActivity().getApplicationContext();
         pref.first(getActivity().getApplicationContext());
-        myphone=pref.retrive();
+        myphone=pref.retrive(getActivity().getApplicationContext());
         listView=view.findViewById(R.id.list);
         activity=getActivity();
         context=getContext();

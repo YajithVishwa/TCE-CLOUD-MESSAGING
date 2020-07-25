@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,6 +13,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Telephony;
@@ -35,6 +39,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.yajith.messaging.FirstTime.Swipe.SwipeActivity;
 import com.yajith.messaging.R;
 import com.yajith.messaging.SharedPref.SharedPref;
 
@@ -48,6 +53,7 @@ public class FirstActivity extends AppCompatActivity {
     Context context;
     SharedPref sharedPref;
     Dialog dialog;
+    Activity activity;
     BroadcastReceiver broadcastReceiver=null;
     String cridentials,ph,otps=null;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -56,7 +62,9 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_first);
-        dialog = new Dialog(FirstActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        activity=this;
+        FirebaseDatabase.getInstance().getReference("User").keepSynced(true);
+        dialog = new Dialog(FirstActivity.this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_progress_bar);
@@ -79,6 +87,19 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ph=editText.getText().toString();
+                if(isNetworkAvailable()==false)
+                {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("InActive Network").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
+                    return;
+                }
                 if(ph.equals(""))
                 {
                     AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -113,6 +134,19 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 otps=editText1.getText().toString();
+                if(isNetworkAvailable()==false)
+                {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("InActive Network").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
+                    return;
+                }
                 if(otps.equals(""))
                 {
                     AlertDialog.Builder builder=new AlertDialog.Builder(context);
@@ -142,6 +176,12 @@ public class FirstActivity extends AppCompatActivity {
         });
 
     }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     private void sendsms()
     {
         String phone="+91"+ph;
@@ -161,6 +201,16 @@ public class FirstActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
                 Toast.makeText(context, "Error Occurred Contact Admin", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("Critical").setMessage("Error Occurred.\nThe app will clear the date.").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ActivityManager manager=(ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+                        manager.clearApplicationUserData();
+                    }
+                }).setCancelable(false);
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
                 e.printStackTrace();
             }
             @Override
@@ -197,8 +247,6 @@ public class FirstActivity extends AppCompatActivity {
                             map.put("isOnline",true);
                             map.put("calling","no");
                             map.put("picked","picked");
-                            sharedPref.uid(uid);
-                            sharedPref.insert(ph);
                             FirebaseDatabase.getInstance().getReference().child("User").child(uid).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

@@ -4,6 +4,11 @@
     <shared>
       <config>
         <device id="pixel" />
+        <device id="pixel_3" />
+        <device id="pixel_3_xl" />
+        <device id="pixel_3a_xl" />
+        <device id="Nexus 7" />
+        <device id="pixel_2_xl" />
         <device id="Nexus 5X" />
         <device id="4.65in 720p (Galaxy Nexus)" />
         <device id="tv_720p" />
@@ -20,22 +25,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6bcbac-3f08-4a1d-9e8c-770cb08687ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/FragmentPageAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeFirst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeSecond.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeThird.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_in_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_out_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_first.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_get_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_swipe.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_progress_bar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_first.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_second.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_third.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_security_security_crypto_1_0_0_rc02_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeFive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeFour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/assetlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/email.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_baseline_done_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_baseline_navigate_next_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/india.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/phone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/proceedbutton.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/roundedbutton.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/send.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/video_call.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cloud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_five.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_forth.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -48,24 +56,30 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/FirstActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/FirstActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/GetDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/GetDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/LoadContact.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/LoadContact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/FragmentPageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/FragmentPageAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeSecond.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeSecond.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeThird.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/FirstTime/Swipe/SwipeThird.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Allcontacts/AllContacts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Allcontacts/AllContacts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/InfoDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/InfoDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/ChatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/CallingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/CallingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/VideoCallFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/VideoCallFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SharedPref/SharedPref.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SharedPref/SharedPref.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SplashScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_first.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_first.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_get_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_get_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/swipe_first.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_first.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/swipe_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_second.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/swipe_third.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/swipe_third.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,9 +127,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -144,7 +158,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ApkExportedModule" value="app" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_API_27" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-18T10:06:19.394Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-25T10:56:20.631Z" />
     <property name="ExportApk.ApkPath" value="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
@@ -153,7 +167,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -161,9 +175,6 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.1833164759">
-      <recent name="com.yajith.messaging.Fragment.VideoCall" />
-    </key>
     <key name="android.template.588844987">
       <recent name="com.yajith.messaging.FirstTime.Swipe" />
     </key>
@@ -172,15 +183,19 @@
       <recent name="com.yajith.messaging.FirstTime" />
       <recent name="com.yajith.messaging" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.yajith.messaging.Fragment.VideoCall" />
-      <recent name="com.yajith.messaging.Fragment.RecentChat" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\TCE-CLOUD-MESSAGING\app\src\main\res\drawable-xxhdpi" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app\src\main\res\drawable-xxhdpi" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app\src\main\res" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app\src\main\res\layout" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yajith.messaging.Fragment.VideoCall" />
+      <recent name="com.yajith.messaging.Fragment.RecentChat" />
+    </key>
+    <key name="android.template.1833164759">
+      <recent name="com.yajith.messaging.Fragment.VideoCall" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -509,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595580073565</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="app">
+      <created>1595604916788</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1595604916788</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -551,22 +573,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1594988383464" />
-    <state x="349" y="167" key="AndroidCreateResourceFileDialog" timestamp="1595603443314">
+    <state x="349" y="167" key="AndroidCreateResourceFileDialog" timestamp="1595681053547">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1595603443314" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1595580064842">
+    <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1595681053547" />
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1595688702091">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595580064842" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595688702091" />
     <state x="449" y="167" key="Downloadable.Font.Dialog.Size" timestamp="1594973491729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="167" key="Downloadable.Font.Dialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1594973491729" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1595510471560">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1595680525688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595510471560" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595680525688" />
     <state x="629" y="325" key="Github.Dialog.Accounts.Choose" timestamp="1595580032432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -575,42 +597,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="626" y="306" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1595060288135" />
-    <state width="1491" height="287" key="GridCell.Tab.0.bottom" timestamp="1595604745331">
+    <state width="1491" height="264" key="GridCell.Tab.0.bottom" timestamp="1595688578290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595604745331" />
-    <state width="1491" height="287" key="GridCell.Tab.0.center" timestamp="1595604745331">
+    <state width="1491" height="264" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595688578290" />
+    <state width="1491" height="264" key="GridCell.Tab.0.center" timestamp="1595688578290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595604745331" />
-    <state width="1491" height="287" key="GridCell.Tab.0.left" timestamp="1595604745330">
+    <state width="1491" height="264" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595688578290" />
+    <state width="1491" height="264" key="GridCell.Tab.0.left" timestamp="1595688578290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595604745330" />
-    <state width="1491" height="287" key="GridCell.Tab.0.right" timestamp="1595604745331">
+    <state width="1491" height="264" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595688578290" />
+    <state width="1491" height="264" key="GridCell.Tab.0.right" timestamp="1595688578290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595604745331" />
+    <state width="1491" height="264" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595688578290" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1594999127568">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594999127568" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595604883384">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595686588373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595604883384" />
-    <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595593754530">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595686588373" />
+    <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595672754456">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1595593754530" />
+    <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1595672754456" />
     <state x="289" y="155" key="psd.add.library.dependency.panel.dimension" timestamp="1595504904437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="289" y="155" key="psd.add.library.dependency.panel.dimension/0.0.1536.824@0.0.1536.824" timestamp="1595504904437" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1595579567736">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1595680785864">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595579567736" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595680785864" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594982159064">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

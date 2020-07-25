@@ -55,7 +55,7 @@ public class RecentChatFragment extends Fragment {
         listView=root.findViewById(R.id.recent);
         sharedPref=new SharedPref();
         sharedPref.first(getActivity().getApplicationContext());
-        myphone=sharedPref.retrive();
+        myphone=sharedPref.retrive(getActivity().getApplicationContext());
         uid=sharedPref.getuid();
         FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
             @Override

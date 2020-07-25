@@ -1,6 +1,7 @@
 package com.yajith.messaging.Fragment.Allcontacts;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.yajith.messaging.FirstTime.GetDetails;
 import com.yajith.messaging.FirstTime.LoadContact;
 import com.yajith.messaging.FirstTime.Name;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;
@@ -55,18 +58,20 @@ public class AllContacts extends AppCompatActivity {
     Context context;
     String myphone;
     SharedPref sharedPref;
-    ProgressDialog progressDialog;
+    Dialog dialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.all_contacts_fragment);
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        dialog = new Dialog(AllContacts.this, android.R.style.Theme_Translucent_NoTitleBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_progress_bar);
+        dialog.show();
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
-        myphone=sharedPref.retrive();
+        myphone=sharedPref.retrive(getApplicationContext());
         getSupportActionBar().setTitle("AllContacts");
         listView=findViewById(R.id.list);
         activity=this;
@@ -90,7 +95,10 @@ public class AllContacts extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        progressDialog.dismiss();
+        if(dialog.isShowing())
+        {
+            dialog.dismiss();
+        }
     }
     public String getContactName(final String phoneNumber, Context context)
     {
@@ -170,11 +178,17 @@ public class AllContacts extends AppCompatActivity {
                 }
                 CustomAdapter customAdapter=new CustomAdapter(activity,name,phone);
                 listView.setAdapter(customAdapter);
-                progressDialog.dismiss();
+                if(dialog.isShowing())
+                {
+                    dialog.dismiss();
+                }
             }
             else
             {
-                progressDialog.dismiss();
+                if(dialog.isShowing())
+                {
+                    dialog.dismiss();
+                }
                 AlertDialog.Builder builder=new AlertDialog.Builder(context);
                 builder.setTitle("Alert").setMessage("Error Occured").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
@@ -199,6 +213,10 @@ public class AllContacts extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if(dialog.isShowing())
+        {
+            dialog.dismiss();
+        }
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

@@ -100,7 +100,7 @@ public class ChatActivity extends AppCompatActivity {
         root=findViewById(R.id.root);
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
-        myphone=sharedPref.retrive();
+        myphone=sharedPref.retrive(getApplicationContext());
         apiService= Client.getRetrofit("https://fcm.googleapis.com/fcm/send/").create(APIService.class);
         activity=this;
         adaps=new ArrayList<>();
@@ -170,18 +170,20 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 else
                 {
+
                     Intent intent=new Intent(ChatActivity.this,CallingActivity.class);
                     intent.putExtra("sender",myphone);
                     intent.putExtra("receiver",receiverphone);
                     intent.putExtra("name",name);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intent);
+                    break;
+
                 }
                 break;
-            default:
-                return super.onOptionsItemSelected(item);
 
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override

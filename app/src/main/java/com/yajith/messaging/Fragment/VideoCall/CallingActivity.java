@@ -1,7 +1,9 @@
 package com.yajith.messaging.Fragment.VideoCall;
 
+import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,11 +24,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.yajith.messaging.Fragment.Chat.ChatActivity;
 import com.yajith.messaging.Fragment.RecentChat.User;
 import com.yajith.messaging.MainActivity;
 import com.yajith.messaging.R;
 import com.yajith.messaging.SharedPref.SharedPref;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 public class CallingActivity extends AppCompatActivity {

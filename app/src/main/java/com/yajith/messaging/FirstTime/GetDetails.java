@@ -8,6 +8,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,8 +20,10 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.yajith.messaging.R;
+import com.yajith.messaging.SharedPref.SharedPref;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +34,7 @@ public class GetDetails extends AppCompatActivity {
     Button button;
     Context context;
     Dialog dialog;
+    SharedPref sharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +43,13 @@ public class GetDetails extends AppCompatActivity {
         ph=getIntent().getExtras().getString("phone");
         uid=getIntent().getExtras().getString("uid");
         editText=findViewById(R.id.name);
-        dialog = new Dialog(GetDetails.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        sharedPref=new SharedPref();
+        sharedPref.first(getApplicationContext());
+        dialog = new Dialog(GetDetails.this, android.R.style.Theme_Translucent_NoTitleBar);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_progress_bar);
-
+        FirebaseDatabase.getInstance().getReference("User").keepSynced(true);
         editText1=findViewById(R.id.age);
         editText2=findViewById(R.id.email);
         editText3=findViewById(R.id.aadhar);
@@ -55,21 +62,66 @@ public class GetDetails extends AppCompatActivity {
                 age=editText1.getText().toString();
                 email=editText2.getText().toString();
                 aadhar=editText3.getText().toString();
+                if(isNetworkAvailable()==false)
+                {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("InActive Network").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
+                    return;
+                }
                 if(name.equals(""))
                 {
-
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("Enter Name").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
                 }
                 else if(age.equals(""))
                 {
-
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("Enter Age").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
                 }
                 else if(email.equals(""))
                 {
-
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("Enter Email").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
                 }
                 else if(aadhar.equals(""))
                 {
-
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Alert").setMessage("Enter Aadhar Number").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            return;
+                        }
+                    });
+                    AlertDialog alertDialo=builder.create();
+                    alertDialo.show();
                 }
                 else if(aadhar.length()!=12)
                 {
@@ -103,6 +155,8 @@ public class GetDetails extends AppCompatActivity {
                                     dialog.dismiss();
                                 }
                                 Intent intent = new Intent(GetDetails.this, LoadContact.class);
+                                sharedPref.uid(uid);
+                                sharedPref.insert(ph);
                                 intent.putExtra("ph", ph);
                                 intent.putExtra("uid",uid);
                                 startActivity(intent);
@@ -124,6 +178,12 @@ public class GetDetails extends AppCompatActivity {
             }
         });
 
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
-        myphone=sharedPref.retrive();
+        myphone=sharedPref.retrive(getApplicationContext());
         actionButton=findViewById(R.id.floating_action_button);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

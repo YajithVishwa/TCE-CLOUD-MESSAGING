@@ -21,14 +21,22 @@ public class FragmentPageAdapter extends FragmentPagerAdapter {
         {
             return new SwipeSecond();
         }
-        else
+        else if(position==2)
         {
             return new SwipeThird();
+        }
+        else if(position==3)
+        {
+            return new SwipeFour();
+        }
+        else
+        {
+            return new SwipeFive();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 }

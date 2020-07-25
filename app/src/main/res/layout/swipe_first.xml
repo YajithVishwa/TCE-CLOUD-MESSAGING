@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/logo"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/open_sans_extrabold"
+            android:text="Welcome to TCE Cloud"
+            android:textColor="#FFFFFF"
+            android:textSize="33sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:textColor="#FFFFFF"
+            android:text="Cloud based voice and video calling app"
+            android:fontFamily="@font/open_sans"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="110dp"
+        android:textAlignment="center"
+        android:text="Swipe>>>"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/india"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#FFFFFF"
+            android:layout_gravity="center"
+            android:background="@drawable/india"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/open_sans_extrabold"
+            android:text="Make in India"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

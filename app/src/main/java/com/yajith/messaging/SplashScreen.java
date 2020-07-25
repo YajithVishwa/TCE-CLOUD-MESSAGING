@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
             case 1000:
                 if(grantResults.length>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED)
                 {
-                    if(sharedPref.retrive()!=null) {
+                    if(sharedPref.retrive(getApplicationContext())!=null ){
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -55,7 +55,7 @@ public class SplashScreen extends AppCompatActivity {
                             @Override
                             public void run() {
                                 finish();
-                                startActivity(new Intent(SplashScreen.this, FirstActivity.class));
+                                startActivity(new Intent(SplashScreen.this, SwipeActivity.class));
 
                             }
                         }, 3000);
