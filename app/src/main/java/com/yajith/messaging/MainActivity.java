@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.Fragment.Allcontacts.AllContacts;
-import com.yajith.messaging.Fragment.ContextClass;
 import com.yajith.messaging.Fragment.RecentChat.RecentChatFragment;
 import com.yajith.messaging.Fragment.VideoCall.AnswerActivity;
 import com.yajith.messaging.Fragment.VideoCall.CallingActivity;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.navigation);
         navigationView.setSelectedItemId(R.id.chat);
         activity=this;
-        ContextClass.context=getApplicationContext();
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Refreshing Contacts");
         context=this;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
-        myphone=sharedPref.retrive(getApplicationContext());
+        myphone=sharedPref.retrive();
         actionButton=findViewById(R.id.floating_action_button);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

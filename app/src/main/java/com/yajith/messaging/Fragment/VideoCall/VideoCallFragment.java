@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,7 +57,7 @@ public class VideoCallFragment extends Fragment {
         pref=new SharedPref();
         mainContext=getActivity().getApplicationContext();
         pref.first(getActivity().getApplicationContext());
-        myphone=pref.retrive(getActivity().getApplicationContext());
+        myphone=pref.retrive();
         listView=view.findViewById(R.id.list);
         activity=getActivity();
         context=getContext();
@@ -112,7 +113,13 @@ public class VideoCallFragment extends Fragment {
                         else {
                             String phone = "+91 " + String.valueOf(dataSnapshot.child("phone").getValue());
                             String name = getContactName(phone, mainContext);
-                            arrayList.add(new Name(name, phone));
+                            if(name.equals(""))
+                            {
+
+                            }
+                            else {
+                                arrayList.add(new Name(name, phone));
+                            }
                         }
                     }
                     publishProgress(arrayList);

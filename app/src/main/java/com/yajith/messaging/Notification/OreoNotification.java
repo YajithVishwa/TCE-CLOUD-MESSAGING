@@ -11,8 +11,8 @@ import android.net.Uri;
 import android.os.Build;
 
 public class OreoNotification extends ContextWrapper {
-    private static final String channel="com.yajith.messaging";
-    private static final String channel_name="messaging";
+    private final String channel="com.yajith.messaging";
+    private final String channel_name="messaging";
     private NotificationManager notificationManager;
     public OreoNotification(Context base) {
         super(base);

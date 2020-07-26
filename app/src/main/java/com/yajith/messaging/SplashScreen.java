@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
             case 1000:
                 if(grantResults.length>0&&grantResults[0]== PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED)
                 {
-                    if(sharedPref.retrive(getApplicationContext())!=null ){
+                    if(sharedPref.retrive()!=null ){
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {

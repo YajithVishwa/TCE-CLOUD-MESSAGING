@@ -71,7 +71,7 @@ public class AllContacts extends AppCompatActivity {
         dialog.show();
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
-        myphone=sharedPref.retrive(getApplicationContext());
+        myphone=sharedPref.retrive();
         getSupportActionBar().setTitle("AllContacts");
         listView=findViewById(R.id.list);
         activity=this;

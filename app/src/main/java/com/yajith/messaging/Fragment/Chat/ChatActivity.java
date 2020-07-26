@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.Menu;
@@ -100,11 +101,13 @@ public class ChatActivity extends AppCompatActivity {
         root=findViewById(R.id.root);
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
-        myphone=sharedPref.retrive(getApplicationContext());
+        myphone=sharedPref.retrive();
         apiService= Client.getRetrofit("https://fcm.googleapis.com/fcm/send/").create(APIService.class);
         activity=this;
         adaps=new ArrayList<>();
         getSupportActionBar().setTitle(name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         listView=findViewById(R.id.list_view);
         floatingActionButton=findViewById(R.id.floating_action_button);
         editText=findViewById(R.id.chattext);
@@ -180,6 +183,10 @@ public class ChatActivity extends AppCompatActivity {
                     break;
 
                 }
+                break;
+            case android.R.id.home:
+                finish();
+
                 break;
 
         }
@@ -318,7 +325,7 @@ public class ChatActivity extends AppCompatActivity {
     private void readMessage()
     {
         final CustomAdapter customAdapter=new CustomAdapter(activity,0,adaps);
-        FirebaseDatabase.getInstance().getReference().child("Chat").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adaps.clear();
@@ -352,51 +359,23 @@ public class ChatActivity extends AppCompatActivity {
                 String date=adaps.get(i).date;
                 boolean seen=adaps.get(i).seen;
                 int type=adaps.get(i).type;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    v.vibrate(500);
+                PowerManager powerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+                        && powerManager.isPowerSaveMode()) {
+
+                }
+                else
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        v.vibrate(500);
+                    }
                 }
                 CopyDialog copyDialog=new CopyDialog(copy,date,seen,type);
                 copyDialog.show(getSupportFragmentManager(),"Copy");
 
                 return true;
-            }
-        });
-        FirebaseDatabase.getInstance().getReference().child("Chat").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Chat chat=snapshot.getValue(Chat.class);
-                if((chat.getReceiver().equals(myphone)&&chat.getSender().equals(receiverphone)))
-                {
-                    adaps.add(new DataAdap(chat.getMsg(),0,chat.getDate(),chat.isIsseen()));
-                }
-                if(chat.getReceiver().equals(receiverphone)&&chat.getSender().equals(myphone))
-                {
-                    adaps.add(new DataAdap(chat.getMsg(),1,chat.getDate(),chat.isIsseen()));
-                }
-                customAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

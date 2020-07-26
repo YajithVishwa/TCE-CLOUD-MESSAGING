@@ -33,7 +33,6 @@ import com.yajith.messaging.FirstTime.FirstActivity;
 import com.yajith.messaging.Fragment.Allcontacts.AllContacts;
 import com.yajith.messaging.Fragment.Chat.Chat;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;
-import com.yajith.messaging.Fragment.ContextClass;
 import com.yajith.messaging.MainActivity;
 import com.yajith.messaging.Notification.Token;
 import com.yajith.messaging.R;
@@ -46,6 +45,7 @@ public class RecentChatFragment extends Fragment {
     ArrayList<String> name=new ArrayList<>();
     String myphone;
     String uid;
+    Context context;
     SharedPref sharedPref;
     ArrayList<User> name1;
     @Nullable
@@ -55,7 +55,8 @@ public class RecentChatFragment extends Fragment {
         listView=root.findViewById(R.id.recent);
         sharedPref=new SharedPref();
         sharedPref.first(getActivity().getApplicationContext());
-        myphone=sharedPref.retrive(getActivity().getApplicationContext());
+        myphone=sharedPref.retrive();
+        context=getContext().getApplicationContext();
         uid=sharedPref.getuid();
         FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,7 +121,7 @@ public class RecentChatFragment extends Fragment {
                         String user = String.valueOf(dataSnapshot.child("phone").getValue());
                         boolean isOnline = dataSnapshot.child("isOnline").getValue(boolean.class);
                         if (name.contains(user)) {
-                            String n = getContactName(user,ContextClass.context);
+                            String n = getContactName(user,context);
                             name1.add(new User(user, n, isOnline));
                         }
                     }

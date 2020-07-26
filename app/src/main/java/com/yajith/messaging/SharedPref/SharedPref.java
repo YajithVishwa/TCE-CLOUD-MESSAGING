@@ -58,7 +58,7 @@ public class SharedPref {
        // return preferences.getString("uid",null);
         return encryptedSharedPreferences.getString("uid",null);
     }
-    public String retrive(Context context)
+    public String retrive()
     {
          return encryptedSharedPreferences.getString("ph",null);
        // return preferences.getString("ph",null);
