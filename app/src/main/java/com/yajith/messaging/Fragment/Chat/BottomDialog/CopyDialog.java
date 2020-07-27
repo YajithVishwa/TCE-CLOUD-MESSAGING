@@ -5,6 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +26,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.R;
 
+import java.util.Locale;
+
 public class CopyDialog extends BottomSheetDialogFragment {
     String text,date;
     boolean seen;
     int type;
     String myphone;
+    TextToSpeech textToSpeech;
     public CopyDialog(String text,String date,boolean seen,int type,String myphone)
     {
         this.text=text;
@@ -46,6 +51,14 @@ public class CopyDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.custom_dialog,container,false);
+        textToSpeech=new TextToSpeech(getContext().getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if(i != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
         if(savedInstanceState!=null) {
             text = savedInstanceState.getString("text");
             date=savedInstanceState.getString("date");
@@ -56,6 +69,7 @@ public class CopyDialog extends BottomSheetDialogFragment {
         Button button=root.findViewById(R.id.copy);
         Button info=root.findViewById(R.id.info);
         Button unsend=root.findViewById(R.id.unsend);
+        final Button textspeech=root.findViewById(R.id.textspeech);
         if(type==0)
         {
             unsend.setVisibility(View.GONE);
@@ -113,7 +127,27 @@ public class CopyDialog extends BottomSheetDialogFragment {
 
             }
         });
+        textspeech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(text!=null) {
+                    Log.i("text",text);
+                    textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                }
+                //dismiss();
+            }
+        });
         return root;
+    }
+
+    @Override
+    public void onPause() {
+        if(textToSpeech!=null)
+        {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onPause();
     }
 
     @Override

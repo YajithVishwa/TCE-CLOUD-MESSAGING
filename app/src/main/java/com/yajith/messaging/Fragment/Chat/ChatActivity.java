@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -26,6 +27,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +49,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.FirstTime.Users;
 import com.yajith.messaging.Fragment.APIService;
+import com.yajith.messaging.Fragment.Chat.BottomDialog.AttachDialog;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.CopyDialog;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.SelectDialog;
 import com.yajith.messaging.Fragment.VideoCall.CallingActivity;
@@ -61,6 +64,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
@@ -84,6 +88,7 @@ public class ChatActivity extends AppCompatActivity {
     APIService apiService;
     ImageView imageView,camera;
     Vibrator v;
+    Context context;
     boolean notific=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,7 @@ public class ChatActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         setContentView(R.layout.activity_chat);
         sharedPref=new SharedPref();
+        context=getApplicationContext();
         name=getIntent().getExtras().getString("name");
         receiverphone=getIntent().getExtras().getString("ph");
         v=(Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
@@ -151,8 +157,8 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    SelectDialog selectDialog=new SelectDialog();
-                    selectDialog.show(getSupportFragmentManager(),"Select");
+                    AttachDialog dialog=new AttachDialog();
+                    dialog.show(getSupportFragmentManager(),"Attach");
                 }
             }
         });

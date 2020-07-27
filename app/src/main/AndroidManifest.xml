@@ -19,6 +19,7 @@
         <activity android:name=".Fragment.VideoCall.AnswerActivity" />
         <activity
             android:name=".Fragment.Chat.ChatActivity"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".FirstTime.GetDetails"
             android:theme="@style/swipe"/>
