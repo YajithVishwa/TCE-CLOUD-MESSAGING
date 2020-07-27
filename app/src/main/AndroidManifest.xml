@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr" />
         <activity android:name=".FirstTime.Swipe.SwipeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/swipe"></activity>

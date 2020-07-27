@@ -48,6 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.FirstTime.Users;
 import com.yajith.messaging.Fragment.APIService;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.CopyDialog;
+import com.yajith.messaging.Fragment.Chat.BottomDialog.SelectDialog;
 import com.yajith.messaging.Fragment.VideoCall.CallingActivity;
 import com.yajith.messaging.Notification.Client;
 import com.yajith.messaging.Notification.MyResponse;
@@ -81,7 +82,7 @@ public class ChatActivity extends AppCompatActivity {
     SharedPref sharedPref;
     ArrayList<DataAdap> adaps;
     APIService apiService;
-    ImageView imageView;
+    ImageView imageView,camera;
     Vibrator v;
     boolean notific=false;
     @Override
@@ -98,6 +99,7 @@ public class ChatActivity extends AppCompatActivity {
             receiverphone=receiverphone.substring(4,receiverphone.length());
         }
         imageView=findViewById(R.id.imageemoji);
+        camera=findViewById(R.id.imagecamera);
         root=findViewById(R.id.root);
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
@@ -137,6 +139,20 @@ public class ChatActivity extends AppCompatActivity {
                 else
                 {
                     sendmes(text,receiverphone,myphone);
+                }
+            }
+        });
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContextCompat.checkSelfPermission(ChatActivity.this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(ChatActivity.this,new String[]{Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE},100);
+                }
+                else
+                {
+                    SelectDialog selectDialog=new SelectDialog();
+                    selectDialog.show(getSupportFragmentManager(),"Select");
                 }
             }
         });
