@@ -21,12 +21,16 @@ import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
+import com.yajith.messaging.Fragment.Chat.ChatActivity;
 import com.yajith.messaging.R;
 
 import java.util.List;
 
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+
 public class SelectDialog extends BottomSheetDialogFragment {
     ImageButton camera;
+    String text="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,21 +66,30 @@ public class SelectDialog extends BottomSheetDialogFragment {
             public void onSuccess(FirebaseVisionText firebaseVisionText) {
                 List<FirebaseVisionText.TextBlock> list=firebaseVisionText.getTextBlocks();
                 if(list.size()==0) {
-                    Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "No Text", Toast.LENGTH_SHORT).show();
+                    dismiss();
                 }
                 else
                 {
                     for(FirebaseVisionText.TextBlock block:firebaseVisionText.getTextBlocks())
                     {
-                        String text=block.getText();
-                        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+                        text+=block.getText()+"  ";
+                        //Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
                     }
+                    if(getActivity()!=null) {
+                        if(getActivity().findViewById(R.id.chattext)!=null) {
+                            EmojiconEditText emojiconEditText = getActivity().findViewById(R.id.chattext);
+                            emojiconEditText.setText(text);
+                        }
+                    }
+                    dismiss();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                dismiss();
             }
         });
     }
