@@ -31,6 +31,16 @@
         android:id="@+id/info"
         android:textStyle="bold"
         android:textSize="25sp"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="unsend"
+        android:id="@+id/unsend"
+        android:textStyle="bold"
+        android:textSize="25sp"
         android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"/>
 

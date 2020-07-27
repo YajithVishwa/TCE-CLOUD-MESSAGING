@@ -383,12 +383,12 @@ public class ChatActivity extends AppCompatActivity {
                 else
                 {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                        v.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                     } else {
-                        v.vibrate(500);
+                        v.vibrate(100);
                     }
                 }
-                CopyDialog copyDialog=new CopyDialog(copy,date,seen,type);
+                CopyDialog copyDialog=new CopyDialog(copy,date,seen,type,myphone);
                 copyDialog.show(getSupportFragmentManager(),"Copy");
 
                 return true;
