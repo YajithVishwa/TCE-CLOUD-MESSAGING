@@ -38,7 +38,7 @@ public class AttachDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 SelectDialog selectDialog=new SelectDialog();
-                selectDialog.show(getParentFragmentManager(),"select");
+                selectDialog.show(getFragmentManager(),"select");
                 dismiss();
             }
         });

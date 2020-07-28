@@ -57,7 +57,7 @@
             </intent-filter>
         </receiver>
         <service
-            android:name=".Notification.MyFirebaseIdService"
+            android:name=".MyFirebaseIdService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

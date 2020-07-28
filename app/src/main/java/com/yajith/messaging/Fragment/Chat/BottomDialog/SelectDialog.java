@@ -2,8 +2,12 @@ package com.yajith.messaging.Fragment.Chat.BottomDialog;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,23 +28,35 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;
 import com.yajith.messaging.R;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 
 public class SelectDialog extends BottomSheetDialogFragment {
-    ImageButton camera;
+    ImageButton camera,gallery;
     String text="";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.custom_dialog_select,container,false);
         camera=root.findViewById(R.id.camera);
+        gallery=root.findViewById(R.id.gallery);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, 1002);
+            }
+        });
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Image"), 1004);
             }
         });
         return root;
@@ -54,6 +70,21 @@ public class SelectDialog extends BottomSheetDialogFragment {
             {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
                 sendphoto(photo);
+            }
+        }
+        if(requestCode==1004)
+        {
+            if(resultCode== Activity.RESULT_OK)
+            {
+                try {
+                    InputStream inputStream=getActivity().getContentResolver().openInputStream(data.getData());
+                    Bitmap bitmap=BitmapFactory.decodeStream(inputStream);
+                    sendphoto(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         }
     }

@@ -25,24 +25,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6bcbac-3f08-4a1d-9e8c-770cb08687ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/AttachDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/mic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/speak.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_attach_dialog.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog_speech.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_storage_19_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_2_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_2_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_2_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_10_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_4_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/APIService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/AttachDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/AttachDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/SelectDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/SelectDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/ChatActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/MyFirebaseIdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/MyFirebaseIdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/MyFirebaseMessaging.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/MyResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/NotifiData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/OreoNotification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/Sender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Notification/Token.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/SplashScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="32006b65babb9575" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_API_27" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -137,20 +180,16 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.588844987">
-      <recent name="com.yajith.messaging.FirstTime.Swipe" />
-    </key>
     <key name="android.template.packageName">
       <recent name="com.yajith.messaging.Fragment.Chat" />
       <recent name="com.yajith.messaging.FirstTime" />
       <recent name="com.yajith.messaging" />
     </key>
-    <key name="android.template.1833164759">
-      <recent name="com.yajith.messaging.Fragment.VideoCall" />
+    <key name="android.template.588844987">
+      <recent name="com.yajith.messaging.FirstTime.Swipe" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.yajith.messaging.Fragment.VideoCall" />
-      <recent name="com.yajith.messaging.Fragment.RecentChat" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.yajith.messaging" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\TCE-CLOUD-MESSAGING\app\src\main\res\drawable-xxhdpi" />
@@ -158,6 +197,13 @@
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app\src\main\res" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app\src\main\res\layout" />
       <recent name="C:\Users\Yajith Vishwa\AndroidStudioProjects\Messaging\app" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yajith.messaging.Fragment.VideoCall" />
+      <recent name="com.yajith.messaging.Fragment.RecentChat" />
+    </key>
+    <key name="android.template.1833164759">
+      <recent name="com.yajith.messaging.Fragment.VideoCall" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -542,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595842392857</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="app">
+      <created>1595853603003</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1595853603003</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -584,14 +637,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1594988383464" />
+    <state x="562" y="271" width="412" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1595857534465">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="271" width="412" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1595857534465" />
     <state x="349" y="167" key="AndroidCreateResourceFileDialog" timestamp="1595849888863">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1595849888863" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1595842388489">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1595853596697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595842388489" />
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595853596697" />
     <state x="449" y="167" key="Downloadable.Font.Dialog.Size" timestamp="1594973491729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -608,30 +665,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="626" y="306" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1595060288135" />
-    <state width="1491" height="222" key="GridCell.Tab.0.bottom" timestamp="1595853442100">
+    <state width="1491" height="263" key="GridCell.Tab.0.bottom" timestamp="1595925174418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="222" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595853442100" />
-    <state width="1491" height="222" key="GridCell.Tab.0.center" timestamp="1595853442100">
+    <state width="1491" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595925174418" />
+    <state width="1491" height="263" key="GridCell.Tab.0.center" timestamp="1595925174418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="222" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595853442100" />
-    <state width="1491" height="222" key="GridCell.Tab.0.left" timestamp="1595853442099">
+    <state width="1491" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595925174418" />
+    <state width="1491" height="263" key="GridCell.Tab.0.left" timestamp="1595925174418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="222" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595853442099" />
-    <state width="1491" height="222" key="GridCell.Tab.0.right" timestamp="1595853442100">
+    <state width="1491" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595925174418" />
+    <state width="1491" height="263" key="GridCell.Tab.0.right" timestamp="1595925174418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="222" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595853442100" />
+    <state width="1491" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595925174418" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1594999127568">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594999127568" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595842400338">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595853615232">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595842400338" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595853615232" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595750943421">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

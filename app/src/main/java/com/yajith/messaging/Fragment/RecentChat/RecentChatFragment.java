@@ -34,11 +34,12 @@ import com.yajith.messaging.Fragment.Allcontacts.AllContacts;
 import com.yajith.messaging.Fragment.Chat.Chat;
 import com.yajith.messaging.Fragment.Chat.ChatActivity;
 import com.yajith.messaging.MainActivity;
-import com.yajith.messaging.Notification.Token;
+
 import com.yajith.messaging.R;
 import com.yajith.messaging.SharedPref.SharedPref;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RecentChatFragment extends Fragment {
     ListView listView;
@@ -104,8 +105,9 @@ public class RecentChatFragment extends Fragment {
     private void updateToken(String refreshtoken)
     {
         DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Tokens");
-        Token token=new Token(refreshtoken);
-        databaseReference.child(uid).setValue(token);
+        HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put("token",refreshtoken);
+        databaseReference.child(uid).setValue(hashMap);
     }
 
     private void readchats() {

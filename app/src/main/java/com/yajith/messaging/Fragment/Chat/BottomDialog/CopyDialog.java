@@ -90,7 +90,7 @@ public class CopyDialog extends BottomSheetDialogFragment {
             public void onClick(View view) {
                 dismiss();
                 InfoDialog infoDialog=new InfoDialog(text,date,seen,type);
-                infoDialog.show(getParentFragmentManager(),"info");
+                infoDialog.show(getFragmentManager(),"info");
             }
         });
         unsend.setOnClickListener(new View.OnClickListener() {

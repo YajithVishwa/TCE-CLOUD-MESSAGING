@@ -48,16 +48,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.yajith.messaging.FirstTime.Users;
-import com.yajith.messaging.Fragment.APIService;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.AttachDialog;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.CopyDialog;
 import com.yajith.messaging.Fragment.Chat.BottomDialog.SelectDialog;
 import com.yajith.messaging.Fragment.VideoCall.CallingActivity;
-import com.yajith.messaging.Notification.Client;
-import com.yajith.messaging.Notification.MyResponse;
-import com.yajith.messaging.Notification.NotifiData;
-import com.yajith.messaging.Notification.Sender;
-import com.yajith.messaging.Notification.Token;
 import com.yajith.messaging.R;
 import com.yajith.messaging.SharedPref.SharedPref;
 import java.text.SimpleDateFormat;
@@ -69,9 +63,7 @@ import java.util.Map;
 
 import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
 import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 
 public class ChatActivity extends AppCompatActivity {
     String name,receiverphone,myphone;
@@ -85,11 +77,9 @@ public class ChatActivity extends AppCompatActivity {
     ValueEventListener valueEventListener;
     SharedPref sharedPref;
     ArrayList<DataAdap> adaps;
-    APIService apiService;
     ImageView imageView,camera;
     Vibrator v;
     Context context;
-    boolean notific=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +100,6 @@ public class ChatActivity extends AppCompatActivity {
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
         myphone=sharedPref.retrive();
-        apiService= Client.getRetrofit("https://fcm.googleapis.com/fcm/send/").create(APIService.class);
         activity=this;
         adaps=new ArrayList<>();
         getSupportActionBar().setTitle(name);
@@ -137,7 +126,6 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String text=editText.getText().toString();
-                notific=true;
                 if(text.isEmpty())
                 {
                     return;
@@ -288,60 +276,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
         final String msg=text;
-        FirebaseDatabase.getInstance().getReference().child("User").child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users user=snapshot.getValue(Users.class);
-                if(notific) {
-                    sendNotification(phone,user.getUid(), text);
-                }
-                notific=false;
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
-    private void sendNotification(final String phone, final String name, final String text) {
-        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Token");
-        Query query=databaseReference.orderByKey().equalTo(phone);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                {
-                    Token token=dataSnapshot.getValue(Token.class);
-                    NotifiData notifiData=new NotifiData(uid,R.mipmap.ic_launcher,phone+": "+text,"New Message",phone);
-                    Sender sender=new Sender(notifiData,token.getToken());
-                    apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
-                        @Override
-                        public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
-                            if(response.code()==200)
-                            {
-                                if(response.body().success==1)
-                                {
-                                    Toast.makeText(ChatActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<MyResponse> call, Throwable t) {
-
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void readMessage()
