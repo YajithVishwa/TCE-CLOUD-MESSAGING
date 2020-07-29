@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
-            android:text="Text"
+            android:text="Msg"
             android:textSize="25sp"
             android:textColor="@color/app_name"
             android:textAlignment="center"
@@ -30,6 +30,7 @@
             android:textSize="25sp"
             android:layout_marginRight="20dp"
             android:id="@+id/copytext"
+            android:maxWidth="250dp"
             android:layout_gravity="right"
             android:textColor="@color/app_name"
             android:layout_marginTop="20dp"

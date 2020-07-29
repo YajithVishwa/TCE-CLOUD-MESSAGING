@@ -46,7 +46,7 @@
                 />
             <ImageButton
                 android:layout_width="40dp"
-                android:background="@drawable/photo"
+                android:background="@drawable/attachment"
                 android:layout_marginRight="5dp"
                 android:id="@+id/imagecamera"
                 android:layout_height="match_parent"/>
