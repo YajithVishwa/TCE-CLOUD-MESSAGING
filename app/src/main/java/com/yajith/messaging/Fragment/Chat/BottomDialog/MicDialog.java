@@ -1,6 +1,7 @@
 package com.yajith.messaging.Fragment.Chat.BottomDialog;
 
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -34,7 +35,15 @@ public class MicDialog extends BottomSheetDialogFragment {
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        speechRecognizer=SpeechRecognizer.createSpeechRecognizer(getContext());
+        if(SpeechRecognizer.isRecognitionAvailable(getContext()))
+        {
+            speechRecognizer=SpeechRecognizer.createSpeechRecognizer(getContext());
+        }
+        else {
+            Toast.makeText(getContext().getApplicationContext(), "You don't have Speech Recognizer installed in your device", Toast.LENGTH_SHORT).show();
+            speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getActivity(), ComponentName.unflattenFromString("com.google.android.googlequicksearchbox/com.google.android.voicesearch.serviceapi.GoogleRecognitionService"));
+            dismiss();
+        }
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle bundle) {

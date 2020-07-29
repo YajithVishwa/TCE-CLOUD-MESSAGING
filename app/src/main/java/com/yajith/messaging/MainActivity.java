@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
     String uid,myphone;
     Context context;
     String name;
+    ViewPager viewPager;
+    com.yajith.messaging.ViewPager viewPager1;
     Activity activity;
-    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +55,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.navigation);
         navigationView.setSelectedItemId(R.id.chat);
         activity=this;
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("Refreshing Contacts");
+        viewPager=findViewById(R.id.frag);
+        viewPager1=new com.yajith.messaging.ViewPager(getSupportFragmentManager());
         context=this;
-        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frag,new RecentChatFragment());
-        fragmentTransaction.commit();
+        viewPager.setAdapter(viewPager1);
         sharedPref=new SharedPref();
         sharedPref.first(getApplicationContext());
         uid=sharedPref.getuid();
@@ -72,19 +71,36 @@ public class MainActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.chat:
-                        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frag,new RecentChatFragment());
-                        fragmentTransaction.commit();break;
+                        viewPager.setCurrentItem(0);
+                        break;
                     case R.id.call:
-                        FragmentTransaction fragmentTransaction1=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction1.replace(R.id.frag,new VideoCallFragment());
-                        fragmentTransaction1.commit();break;
+                        viewPager.setCurrentItem(1);
+                        break;
                     default:
-                        FragmentTransaction fragmentTransaction2=getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction2.replace(R.id.frag,new RecentChatFragment());
-                        fragmentTransaction2.commit();break;
+                        viewPager.setCurrentItem(0);
                 }
                 return true;
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position)
+                {
+                    case 0:navigationView.getMenu().findItem(R.id.chat).setChecked(true);break;
+                    case 1:navigationView.getMenu().findItem(R.id.call).setChecked(true);break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
         actionButton.setOnClickListener(new View.OnClickListener() {
@@ -99,42 +115,49 @@ public class MainActivity extends AppCompatActivity {
     private void callcheck()
     {
         Flag.setCall(1);
-        FirebaseDatabase.getInstance().getReference().child("User").child(uid).addValueEventListener(new ValueEventListener() {
+        Thread thread=new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()&&snapshot.hasChild("Ringing"))
-                {
-                    final String callinguid=snapshot.child("Ringing").child("calling").getValue(String.class);
-                    if(!snapshot.child("Ringing").hasChild("picked")) {
-                        if(Flag.getCall()==1) {
-                            FirebaseDatabase.getInstance().getReference().child("User").child(callinguid).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(Flag.getCall()==1) {
-                                        Flag.setCall(2);
-                                        String callingph = snapshot.child("phone").getValue(String.class);
-                                        Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
-                                        intent.putExtra("receiveruid", callinguid);
-                                        intent.putExtra("name", getContactName(callingph, getApplicationContext()));
-                                        startActivity(intent);
-                                    }
-                                }
+            public void run() {
+                FirebaseDatabase.getInstance().getReference().child("User").child(uid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()&&snapshot.hasChild("Ringing"))
+                        {
+                            final String callinguid=snapshot.child("Ringing").child("calling").getValue(String.class);
+                            if(!snapshot.child("Ringing").hasChild("picked")) {
+                                if(Flag.getCall()==1) {
+                                    FirebaseDatabase.getInstance().getReference().child("User").child(callinguid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(Flag.getCall()==1) {
+                                                Flag.setCall(2);
+                                                String callingph = snapshot.child("phone").getValue(String.class);
+                                                Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
+                                                intent.putExtra("receiveruid", callinguid);
+                                                intent.putExtra("name", getContactName(callingph, getApplicationContext()));
+                                                startActivity(intent);
+                                            }
+                                        }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
+                                        }
+                                    });
                                 }
-                            });
+                            }
                         }
                     }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
             }
         });
+        thread.start();
+
     }
     public String getContactName(final String phoneNumber, Context context)
     {
@@ -155,17 +178,24 @@ public class MainActivity extends AppCompatActivity {
         return contactName;
     }
 
-    private void isOnline(boolean isOnline)
+    private void isOnline(final boolean isOnline)
     {
-        Map<String,Object> map=new HashMap<>();
-        map.put("isOnline",isOnline);
-
-        FirebaseDatabase.getInstance().getReference().child("User").child(uid).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        Thread thread=new Thread(new Runnable() {
             @Override
-            public void onSuccess(Void aVoid) {
-              //  Toast.makeText(MainActivity.this, "Changed", Toast.LENGTH_SHORT).show();
+            public void run() {
+                Map<String,Object> map=new HashMap<>();
+                map.put("isOnline",isOnline);
+                FirebaseDatabase.getInstance().getReference().child("User").child(uid).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        //  Toast.makeText(MainActivity.this, "Changed", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
+        thread.start();
+
+
     }
 
     @Override
@@ -185,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         isOnline(false);
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-        progressDialog.dismiss();
     }
 
     @Override

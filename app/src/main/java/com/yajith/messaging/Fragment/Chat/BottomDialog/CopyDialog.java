@@ -131,7 +131,7 @@ public class CopyDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 if(text!=null) {
-                    Log.i("text",text);
+
                     textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
                 }
                 //dismiss();

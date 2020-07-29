@@ -16,6 +16,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,37 +60,43 @@ public class RecentChatFragment extends Fragment {
         myphone=sharedPref.retrive();
         context=getContext().getApplicationContext();
         uid=sharedPref.getuid();
-        FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
+        Thread thread=new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds:snapshot.getChildren())
-                {
-                    Chat chat=ds.getValue(Chat.class);
-                    if(chat.getSender().equals(myphone))
-                    {
-                        String names=chat.getReceiver();
-                        if(!name.contains(names)) {
-                            name.add(names);
+            public void run() {
+                FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot ds:snapshot.getChildren())
+                        {
+                            Chat chat=ds.getValue(Chat.class);
+                            if(chat.getSender().equals(myphone))
+                            {
+                                String names=chat.getReceiver();
+                                if(!name.contains(names)) {
+                                    name.add(names);
+                                }
+                            }
+                            if(chat.getReceiver().equals(myphone))
+                            {
+                                String names=chat.getSender();
+                                if(!name.contains(names)) {
+                                    name.add(names);
+                                }
+
+                            }
                         }
-                    }
-                    if(chat.getReceiver().equals(myphone))
-                    {
-                        String names=chat.getSender();
-                        if(!name.contains(names)) {
-                            name.add(names);
-                        }
+                        readchats();
 
                     }
-                }
-                readchats();
 
-            }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+                    }
+                });
             }
         });
+       thread.start();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -102,42 +109,61 @@ public class RecentChatFragment extends Fragment {
         updateToken(sharedPref.gettoken());
         return root;
     }
-    private void updateToken(String refreshtoken)
+    private void updateToken(final String refreshtoken)
     {
-        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Tokens");
-        HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("token",refreshtoken);
-        databaseReference.child(uid).setValue(hashMap);
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("Tokens");
+                HashMap<String,Object> hashMap=new HashMap<>();
+                hashMap.put("token",refreshtoken);
+                databaseReference.child(uid).setValue(hashMap);
+            }
+        });
+        thread.start();
+
     }
 
     private void readchats() {
         name1 = new ArrayList<>();
         if (getActivity() != null) {
             final CustomAdapter customAdapter = new CustomAdapter((MainActivity) getActivity(), name1);
-            FirebaseDatabase.getInstance().getReference().child("User").addValueEventListener(new ValueEventListener() {
+            Thread thread1=new Thread(new Runnable() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    name1.clear();
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                public void run() {
+                    FirebaseDatabase.getInstance().getReference().child("User").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            name1.clear();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                        String user = String.valueOf(dataSnapshot.child("phone").getValue());
-                        boolean isOnline = dataSnapshot.child("isOnline").getValue(boolean.class);
-                        if (name.contains(user)) {
-                            String n = getContactName(user,context);
-                            name1.add(new User(user, n, isOnline));
+                                String user = String.valueOf(dataSnapshot.child("phone").getValue());
+                                boolean isOnline = dataSnapshot.child("isOnline").getValue(boolean.class);
+                                if (name.contains(user)) {
+                                    String n = getContactName(user,context);
+                                    if(n.equals(""))
+                                    {
+                                        name1.add(new User(user,user,isOnline));
+                                    }
+                                    else {
+                                        name1.add(new User(user, n, isOnline));
+                                    }
+                                }
+                            }
+                            listView.setAdapter(customAdapter);
+                            customAdapter.notifyDataSetChanged();
                         }
-                    }
-                    listView.setAdapter(customAdapter);
-                    customAdapter.notifyDataSetChanged();
-                }
 
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
                 }
             });
 
+            thread1.start();
 
         }
     }
