@@ -49,6 +49,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:id="@+id/chatlist"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/open_sans_bold"
+                android:layout_marginRight="20dp"
+                android:textColor="#303335"
+                android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/imageprofile"
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/nameid"

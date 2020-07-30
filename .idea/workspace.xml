@@ -26,29 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f6bcbac-3f08-4a1d-9e8c-770cb08687ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/ViewPager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/CopyDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/MicDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/Chat/BottomDialog/MicDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/RecentChatFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/VideoCallFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/VideoCall/VideoCallFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recent_chat_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recent_chat_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/CustomAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yajith/messaging/Fragment/RecentChat/CustomAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_list_recent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_list_recent.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -579,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596009628748</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="app">
+      <created>1596047784596</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1596047784596</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -629,10 +619,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1595849888863" />
-    <state x="361" y="7" key="CommitChangelistDialog2" timestamp="1596009620308">
+    <state x="361" y="7" key="CommitChangelistDialog2" timestamp="1596047772652">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1596009620308" />
+    <state x="361" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1596047772652" />
     <state x="449" y="167" key="Downloadable.Font.Dialog.Size" timestamp="1594973491729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -649,30 +639,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="626" y="306" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1595060288135" />
-    <state width="1491" height="263" key="GridCell.Tab.0.bottom" timestamp="1596047680483">
+    <state width="1491" height="263" key="GridCell.Tab.0.bottom" timestamp="1596105173910">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596047680483" />
-    <state width="1491" height="263" key="GridCell.Tab.0.center" timestamp="1596047680482">
+    <state width="1491" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596105173910" />
+    <state width="1491" height="263" key="GridCell.Tab.0.center" timestamp="1596105173909">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596047680482" />
-    <state width="1491" height="263" key="GridCell.Tab.0.left" timestamp="1596047680482">
+    <state width="1491" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596105173909" />
+    <state width="1491" height="263" key="GridCell.Tab.0.left" timestamp="1596105173909">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596047680482" />
-    <state width="1491" height="263" key="GridCell.Tab.0.right" timestamp="1596047680482">
+    <state width="1491" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596105173909" />
+    <state width="1491" height="263" key="GridCell.Tab.0.right" timestamp="1596105173910">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596047680482" />
+    <state width="1491" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596105173910" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1594999127568">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594999127568" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595926595294">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1596047802094">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595926595294" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1596047802094" />
     <state x="93" y="93" width="1350" height="638" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595750943421">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

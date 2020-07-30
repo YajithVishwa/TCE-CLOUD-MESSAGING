@@ -27,6 +27,7 @@ public class CustomAdapter extends ArrayAdapter<User> {
     Activity activity;
     String lastmsg;
     String myphone="";
+    int count=0;
     SharedPref sharedPref;
     public CustomAdapter(@NonNull Activity context, ArrayList<User> name) {
         super(context, R.layout.custom_list_all,name);
@@ -44,13 +45,15 @@ public class CustomAdapter extends ArrayAdapter<User> {
         TextView nametex=root.findViewById(R.id.nameid);
         nametex.setText(name.get(position).getName());
         TextView last=root.findViewById(R.id.last_msg);
+        TextView newmsg=root.findViewById(R.id.chatlist);
         ImageView online=root.findViewById(R.id.online);
         if(name.get(position).isOnline()==true)
         {
-            checklastmsg(name.get(position).getPh(),last);
+            checklastmsg(name.get(position).getPh(),last,newmsg);
         }
         else
         {
+            checklastmsg(name.get(position).getPh(),last,newmsg);
             //last.setText("**No Text**");
             last.setVisibility(View.INVISIBLE);
         }
@@ -66,22 +69,36 @@ public class CustomAdapter extends ArrayAdapter<User> {
 
         return root;
     }
-    private void checklastmsg(final String ph, final TextView last)
+    private void checklastmsg(final String ph, final TextView last,final TextView newmsg)
     {
         myphone=sharedPref.retrive();
         lastmsg="No Msg";
-        Log.i(ph,myphone);
         FirebaseDatabase.getInstance().getReference().child("Chat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren())
                 {
+                    count=0;
                     Chat chat=dataSnapshot.getValue(Chat.class);
                     if((chat.getReceiver().equals(myphone)&&chat.getSender().equals(ph))||(chat.getSender().equals(myphone)&&chat.getReceiver().equals(ph)))
                     {
+                        if(chat.getSender().equals(ph))
+                        {
+                            if(chat.isIsseen()==false)
+                            {
+                                count++;
+                            }
+                        }
                         lastmsg=chat.getMsg();
-                        Log.i("last",lastmsg);
                     }
+                }
+                if(count==0)
+                {
+                    newmsg.setVisibility(View.GONE);
+                }
+                else
+                {
+                    newmsg.setText(String.valueOf(count));
                 }
                 switch (lastmsg)
                 {
@@ -91,7 +108,6 @@ public class CustomAdapter extends ArrayAdapter<User> {
                     default:
                         last.setText(lastmsg);
                 }
-                Log.i("last1",lastmsg);
                 lastmsg="No Msg";
             }
 
